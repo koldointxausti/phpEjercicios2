@@ -7,6 +7,9 @@
 		body{
 			font-size: 24px;
 		}
+		td, th{
+			border:1px solid black;
+		}
 	</style>
 </head>
 <body>
@@ -30,12 +33,17 @@
 			'Diciembre' => ['Laia','Olinka','Alaitz']
 		];
 		echo 'Tamaño del array de nombres por mes tras añadir a Naia: '. añadir('Naia','Diciembre',$data).'<br>';
-		foreach ($data as $mes => $personas) {
-			echo '<span style="color:blue">'.$mes.'</span><br>';
-			foreach ($personas as $persona) {
-				echo $persona.'<br>';
-			}
-		}	
 	?>
+	<table>
+		<?php
+			foreach ($data as $mes => $personas) {
+				echo '<th>'.$mes.'</th>';
+				foreach ($personas as $persona) {
+					echo '<td>'.$persona.'</td>';
+				}
+				echo '</tr>';
+			}	
+		?>
+	</table>
 </body>
 </html>
