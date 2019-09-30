@@ -5,49 +5,17 @@
 	<meta charset="utf-8">
 </head>
 <body>
+	<form action="" method="get">
+		<input type="number" name="year" minlength="4" maxlength="4" min="1900" max="2150">
+		<input type="submit">
+	</form>
 	<?php
-		$mesesJson = '[
-			{
-				"nombre":"Enero",
-				"numDias":31
-			},{
-				"nombre":"Febrero",
-				"numDias":28
-			},{
-				"nombre":"Marzo",
-				"numDias":31
-			},{
-				"nombre":"Abril",
-				"numDias":30
-			},{
-				"nombre":"Mayo",
-				"numDias":31
-			},{
-				"nombre":"Junio",
-				"numDias":30
-			},{
-				"nombre":"Julio",
-				"numDias":31
-			},{
-				"nombre":"Agosto",
-				"numDias":31
-			},{
-				"nombre":"Septiembre",
-				"numDias":30
-			},{
-				"nombre":"Octubre",
-				"numDias":31
-			},{
-				"nombre":"Noviembre",
-				"numDias":30
-			},{
-				"nombre":"Diciembre",
-				"numDias":31
-			}	
-		]';
-		$mesesArray =  json_decode($mesesJson, true);
-		for($i = 0; $i < sizeof($mesesArray); $i++)
-			echo $mesesArray[$i]['nombre'].' tiene '.$mesesArray[$i]['numDias'].' días<br>';
+		$year = $_GET['year'];
+		$meses = [];
+		for($i=1; $i<=12; $i++){
+			array_push($meses, cal_days_in_month(CAL_GREGORIAN, $i, $year));
+			echo $meses[($i-1)].'<br>';
+		}
 	?>
 </body>
 </html>
